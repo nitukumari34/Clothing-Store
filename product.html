@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/product.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+    integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+ 
+
+  <script src="/Angular/module.js"></script>
+  <script src="/Angular/services.js"></script>
+  <script src="/Angular/CategoryController.js"></script>
+  <script src="/Angular/ProductController.js"></script>
+
+</head>
+
+<body ng-app="MyApp" ng-controller="catCtrl">
+    <!-- <nav class="navbar"></nav> -->
+
+    <nav class="navbar">
+        <div class="nav">
+          <img src="img/dark-logo .png" class="brand-logo" alt="">
+          <div class="nav-items">
+            <div class="search">
+              <input type="text" class="search-box" placeholder="search brand, product">
+              <button class="search-btn">search</button>
+            </div>
+            <a href="signup.html"><img src="img/user .png" alt=""></a>
+    
+            <a href="cart.html"><img src="img/cart (1).png" alt=""></a>
+          </div>
+        </div>
+      </nav>
+
+    <ul class="links-container">
+        <li class="link-item"><a href="index.html" class="link">home</a></li>
+        <li class="link-item" ng-repeat="c in CategoryList"><a href="#" class="link">{{c.cat_Name}}</a> </li>
+    
+    
+        <!-- <li class="link-item"><a href="#" class="link">women</a></li>
+                <li class="link-item"><a href="#" class="link">men</a></li>
+                <li class="link-item"><a href="#" class="link">kids</a></li>
+                <li class="link-item"><a href="#" class="link">accessories</a></li> -->
+      </ul> 
+
+
+
+        <section class="product-details" >
+            <div class="image-slider">
+                <div class="product-images">
+                    <img src="img/product image 1.png" class="active" alt="">
+                    <img src="img/product image 2 .png" alt="">
+                    <img src="img/product image 3.png" alt="">
+                    <img src="img/product image 4 .png" alt="">
+                </div>
+            </div>
+            <div class="details">
+                <h2 class="product-brand">calvin klein {{m.productName}}</h2>
+                <p class="product-short-des">Lorem ipsum dolor sit, amet consectetur adipisicing elit. {{m.short_desc}}</p>
+                <span class="product-price">MRP: ₹ {{m.selling_price}}/-</span>
+                <span class="product-actual-price">MRP: ₹ {{m.MRP}}/-</span>
+                <span class="product-discount">( 50% off )</span>
+
+                <p class="product-sub-heading">select size{{m.size}}</p>
+
+                <input type="radio" name="size" value="s" checked hidden id="s-size"> 
+                <label for="s-size" class="size-radio-btn check">s</label>
+                <input type="radio" name="size" value="m" hidden id="m-size">
+                <label for="m-size" class="size-radio-btn">m</label>
+                <input type="radio" name="size" value="l" hidden id="l-size">
+                <label for="l-size" class="size-radio-btn">l</label>
+                <input type="radio" name="size" value="xl" hidden id="xl-size">
+                <label for="xl-size" class="size-radio-btn">xl</label>
+                <input type="radio" name="size" value="xxl" hidden id="xxl-size">
+                <label for="xxl-size" class="size-radio-btn">xxl</label>
+
+                <button class="btn cart-btn" ng-click="Addcart(m)">add to cart</button>
+                <button class="btn">add to wishlist</button>
+            </div>
+
+        </section>
+
+          <section class="detail-des"> 
+            <h2 class="heading">description</h2>
+            <p class="des">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Eaque, cum odio nam adipisci dignissimos vitae facilis ratione assumenda dolores! Recusandae aspernatur
+                commodi quibusdam sunt doloribus. Quibusdam, placeat. Unde repellendus nesciunt, corporis illo quia quas
+                vel, mollitia natus aperiam asperiores cumque! Officiis quam saepe dolor unde pariatur voluptates nihil
+                omnis eos culpa veritatis? Expedita sit officiis inventore quaerat earum voluptatibus iusto vel,
+                sapiente dolor eius! Sed consequatur molestiae soluta, quis mollitia dicta quo excepturi atque eum,
+                vitae aspernatur, libero debitis facere et modi ipsum minus pariatur accusantium commodi qui asperiores.
+                Sapiente, culpa repudiandae qui, facere officiis quo praesentium ut deleniti atque quis saepe
+                reiciendis! Eaque voluptates dolorum explicabo eos facere, natus modi accusamus atque iste rem placeat
+                maxime, reprehenderit repellendus recusandae. Sunt velit modi, asperiores quasi animi alias repellat
+                maiores sed esse delectus perspiciatis, minus ad porro incidunt eos sint, eveniet sequi nesciunt quaerat
+                ut cupiditate voluptatum accusantium facilis vero! Beatae eum, perferendis at explicabo error architecto
+                cupiditate quidem placeat quasi sapiente modi non dolor nesciunt ducimus et? Maiores ipsa, hic modi
+                nulla voluptatibus perferendis dolorem consequuntur ducimus porro repellat, amet veritatis itaque ab,
+                vel quisquam facere rerum corporis. Et, magnam ullam ab alias consectetur vero quidem ipsa earum
+                expedita eum fugiat quo. Aspernatur molestias cum, excepturi similique ab, assumenda praesentium
+                perferendis corporis vitae fuga modi libero! Provident quos neque sapiente. Harum facere eaque placeat
+                autem veniam pariatur, odit repellat eligendi natus necessitatibus nobis nihil iste repellendus quam!
+                Qui minus commodi alias fuga eos ipsum adipisci consequuntur ducimus deserunt ut optio expedita,
+                voluptate illo ratione, assumenda esse voluptatem neque inventore nihil nam harum fugiat. Dolores est
+                illum quam harum saepe cupiditate magni, nihil quaerat et? Nam repudiandae ipsa blanditiis qui et
+                eveniet fugit voluptates aspernatur porro itaque magni odio in fugiat ducimus,
+                a deserunt laudantium? Assumenda laudantium ut ipsam aperiam obcaecati!</p>
+        </section> 
+
+
+        <!-- <section class="detail-des">
+            <h2 class="heading">description</h2>
+            <p class="des"></p>
+        </section> -->
+
+    <footer></footer>
+   
+    <script src="js/footer.js"></script>
+    
+    
+
+    
+</body>
+
+</html>

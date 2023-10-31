@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing : Cart</title>
+
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/cart.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+        integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+    <script src="/Angular/module.js"></script>
+    <script src="/Angular/services.js"></script>
+    <script src="/Angular/CategoryController.js"></script>
+    <script src="/Angular/CartController.js"></script>
+    <script src="/Angular/ProductController.js"></script>
+    <script src="/Angular/CategoryCtrl.js"></script>
+
+
+</head>
+
+<body ng-app="MyApp" ng-controller="catCtrl">
+    <!-- <nav class="navbar"></nav> -->
+
+    <nav class="navbar">
+        <div class="nav">
+            <img src="img/dark-logo .png" class="brand-logo" alt="">
+            <div class="nav-items">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="search brand, product">
+                    <button class="search-btn">search</button>
+                </div>
+                <a href="signup.html"><img src="img/user .png" alt=""></a>
+
+                <a href="ShoppingCart.html"><img src="img/cart (1).png" alt=""></a>
+            </div>
+        </div>
+    </nav>
+
+
+    <ul class="links-container">
+        <li class="link-item"><a href="index.html" class="link">home</a></li>
+        <li class="link-item" ng-repeat="c in CategoryList"><a href="Category.html" class="link">{{c.cat_Name}}</a>
+        </li>
+
+        <!-- <li class="link-item"><a href="#" class="link">women</a>
+          <ul class=" links-container">
+            <li><a href="">T-Shirts</a></li>
+            <li><a href="">Shirts</a></li>
+            <li><a href="">Tr</a></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </li>
+    
+        <li class="link-item"><a href="#" class="link">men</a></li>
+    
+        <li class="link-item"><a href="#" class="link">kids</a></li>
+        <li class="link-item"><a href="#" class="link">accessories</a></li>  -->
+    </ul>
+
+
+    <div class="cart-section" ng-controller="cartCtrl">
+        <div class="product-list">
+            <p class="section-heading">your cart</p>
+            <div class="cart">
+
+                <!-- cart product goes here -->
+                <!-- <img src="img/empty-cart.png" class="empty-img" alt=""> -->
+                <!-- <div class="sm-product" ng-repeat="c in cartList">
+                    <img src="img/product image 1.png" class="sm-product-img" alt="">
+
+                   
+                    <div class="sm-text">
+                        <p class="sm-product-name">BRAND</p>
+                        <P class="sm-des">this is a short line about</P>
+                    </div>
+                    <div class="item-counter">
+                        <button class="counter-btn decrement">-</button>
+                        <p class="item-count">1</p>
+                        <button class="counter-btn increment">+</button>
+                    </div>
+                    <p class="sm-price"ng-model="price">₹500</p>
+                    <button class="sm-delete-btn"><img src="img/close.png" alt=""></button>
+                </div>  -->
+
+
+                <div class="sm-product" ng-repeat="c in cartList">
+                    <img ng-src="{{c.image}}" class="sm-product-img" alt="">
+                    <div class="sm-text">
+                        <p class="sm-product-name">{{c.productName}}</p>
+                        <P class="sm-des">{{c.short_desc}}<br> MRP: ₹ {{c.price}}/- </P>
+                    </div>
+                    <div class="item-counter">
+                        <button class="counter-btn decrement" ng-click="DecreaseQty(c.cartId,c.QTY,c.price)">-</button>
+                        <p class="item-count" ng-model="qty">{{c.QTY}}</p>
+                        <button class="counter-btn increment" ng-click="IncreaseQty(c.cartId,c.QTY,c.price)">+</button>
+                    </div>
+                    <p class="sm-price" ng-model="">₹ {{c.Total_Amount}}/-</p>
+                    <button class="sm-delete-btn" ng-click="RemoveCartById(c.cartId)"><img src="img/close.png"
+                            alt=""></button>
+                </div>
+            </div>
+
+            <!-- <p class="section-heading">your wislisht</p>
+            <div class="wislisht">
+                
+            </div>  -->
+        </div>
+        <div class="checkout-section">
+            <div class="checkout-box">
+                <p class="text"> your total bill,</p>
+                <h3 class="bill" style="font-size: xx-large;" ng-model="tamount">₹ {{total}}/- </h3>
+                <a href="checkout.html" class="checkout-btn" value="{{btnName}}"
+                    ng-click="SubmitCart(c)">{{btnName}}</a>
+
+            </div>
+
+        </div>
+    </div>
+    <footer></footer>
+
+    <script src="js/footer.js"></script>
+
+</body>
+
+</html>

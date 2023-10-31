@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothing : Checkout</title>
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+    integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/signup.css">
+
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/checkout.css">
+
+
+  <script src="/Angular/module.js"></script>
+  <script src="/Angular/services.js"></script>
+  <script src="/Angular/CategoryController.js"></script>
+  <script src="/Angular/CategoryCtrl.js"></script>
+  <script src="/Angular/ProductController.js"></script>
+  <script src="/Angular/CartController.js"></script>
+  <script src="/Angular/OrderController.js"></script>
+</head>
+
+<body ng-app="MyApp" ng-controller="catCtrl">
+  <nav class="navbar">
+    <div class="nav">
+      <img src="img/dark-logo .png" class="brand-logo" alt="">
+      <div class="nav-items">
+        <div class="search">
+          <input type="text" class="search-box" placeholder="search brand, product">
+          <button class="search-btn">search</button>
+        </div>
+        <a href="signup.html"><img src="img/user .png" alt=""></a>
+
+        <a href="ShoppingCart.html"><img src="img/cart (1).png" alt=""></a>
+      </div>
+    </div>
+  </nav>
+
+  <ul class="links-container">
+    <li class="link-item"><a href="index.html" class="link">home</a></li>
+    <li class="link-item" ng-repeat="c in CategoryList"><a href="Category.html" class="link">{{c.cat_Name}}</a> </li>
+
+
+    <!-- <li class="link-item"><a href="#" class="link">women</a></li>
+            <li class="link-item"><a href="#" class="link">men</a></li>
+            <li class="link-item"><a href="#" class="link">kids</a></li>
+            <li class="link-item"><a href="#" class="link">accessories</a></li> -->
+  </ul>
+
+  <!-- <div class="alert-box">
+    <img src="img/error.png" class="alert-img" alt="">
+    <p class="alert-img"></p>
+  </div> -->
+
+  <div class="form" ng-controller="orderCtrl">
+    <h1 class="heading">Checkout</h1>
+    <p class="text" ng-repeat="o in OrderList">derlivery address </p>
+    <input type="text" id="name" placeholder="name" ng-model="name">
+    <input type="text" id="mobile" placeholder="mobile" ng-model="mobile">
+    <input type="text" id="address" placeholder="address" ng-model="address">
+    <input type="text" id="street" placeholder="street" ng-model="street">
+    <div class="three-input-container">
+
+      <input type="text" id="city" placeholder="city" ng-model="city">
+      <input type="text" id="state" placeholder="state" ng-model="state">
+      <input type="text" id="pincode" placeholder="pinc ode" ng-model="pincode">
+
+    </div>
+    <input type="text" name="landmark" id="landmark" placeholder=" landmark" ng-model="landmark">
+
+    <!-- <div class="checkout-section" ng-controller="cartCtrl">
+      <div class="checkout-box">
+        <p class="text">your total bill,</p>
+        <h3 class="bill" style="font-size: xx-large;">₹ {{total}}/-</h3>
+        <button class="place-order-btn " value="{{btnName}}" ng-click="placeOrder()">{{btnName}}</button>
+      </div>
+    </div> -->
+
+  </div>
+  <div class="cart-section" ng-controller="cartCtrl">
+    <div class="product-list">
+      <p class="section-heading">your cart</p>
+      <div class="cart">
+        <!-- 
+        data is {{cartList}}
+        cart product goes here -->
+        <!-- <img src="img/empty-cart.png" class="empty-img" alt=""> -->
+        <div class="sm-product" ng-repeat="c in cartList">
+          <img ng-src="{{c.image}}" class="sm-product-img" alt="">
+
+
+          <div class="sm-text">
+            <p class="sm-product-name">{{c.productName}}</p>
+            <P class="sm-des">{{c.short_desc}} <br>MRP: ₹ {{c.price}}/- </P>
+          </div>
+          <div class="item-counter">
+            <button class="counter-btn decrement" ng-click="DecreaseQty(c.cartId,c.QTY,c.price)">-</button>
+            <p class="item-count">{{c.QTY}}</p>
+            <button class="counter-btn increment" ng-click="IncreaseQty(c.cartId,c.QTY,c.price)">+</button>
+          </div>
+          <p class="sm-price" ng-model="price">₹ {{c.Total_Amount}}/-</p>
+          <button class="sm-delete-btn" ng-click="RemoveCartById(c.cartId)"><img src="img/close.png" alt=""></button>
+        </div>
+
+      </div>
+    </div>
+    <div class="checkout-section">
+      <div class="checkout-box">
+        <p class="text">your total bill,</p>
+        <h3 class="bill" style="font-size: xx-large;">₹ {{total}}/-</h3>
+        <button class="place-order-btn " ng-click="placeOrder()">{{btnName}}</button>
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="footer-content">
+      <img src="img/light-logo .png" class="logo" alt="">
+      <div class="footer-ul-container">
+        <ul class="category">
+          <li class="category-title">men</li>
+          <li><a href="#" class="footer-link">t-shirts</a></li>
+          <li><a href="#" class="footer-link">sweatshirts</a></li>
+          <li><a href="#" class="footer-link">shirts</a></li>
+          <li><a href="#" class="footer-link">jeans</a></li>
+          <li><a href="#" class="footer-link">trousers</a></li>
+          <li><a href="#" class="footer-link">shoes</a></li>
+          <li><a href="#" class="footer-link">casuals</a></li>
+          <li><a href="#" class="footer-link">formals</a></li>
+          <li><a href="#" class="footer-link">sports</a></li>
+          <li><a href="#" class="footer-link">watch</a></li>
+        </ul>
+        <ul class="category">
+          <li class="category-title">women</li>
+          <li><a href="#" class="footer-link">t-shirts</a></li>
+          <li><a href="#" class="footer-link">sweatshirts</a></li>
+          <li><a href="#" class="footer-link">shirts</a></li>
+          <li><a href="#" class="footer-link">jeans</a></li>
+          <li><a href="#" class="footer-link">trousers</a></li>
+          <li><a href="#" class="footer-link">shoes</a></li>
+          <li><a href="#" class="footer-link">casuals</a></li>
+          <li><a href="#" class="footer-link">formals</a></li>
+          <li><a href="#" class="footer-link">sports</a></li>
+          <li><a href="#" class="footer-link">watch</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-title">about company</p>
+    <p class="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat tempore ad suscipit, eos eius
+      quisquam sed optio nisi quaerat fugiat ratione et vero maxime praesentium, architecto minima reiciendis iste quo
+      deserunt assumenda alias ducimus. Ullam odit maxime id voluptates rerum tenetur corporis laboriosam! Cum error
+      ipsum laborum tempore in rerum necessitatibus nostrum nobis modi! Debitis adipisci illum nemo aperiam sed, et
+      accusamus ut officiis. Laborum illo exercitationem quo culpa reprehenderit excepturi distinctio tempore cupiditate
+      praesentium nisi ut iusto, assumenda perferendis facilis voluptas autem fuga sunt ab debitis voluptatum harum eum.
+      Asperiores, natus! Est deserunt incidunt quasi placeat omnis, itaque harum?</p>
+    <p class="info">support emails - help@clothing.com, customersupport@clothing.com</p>
+    <p class="info">telephone - 180 00 00 001, 180 00 00 002</p>
+    <div class="footer-social-container">
+      <div>
+        <a href="#" class="social-link">terms & services</a>
+        <a href="#" class="social-link">privacy page</a>
+      </div>
+      <div>
+        <a href="#" class="social-link">instagram</a>
+        <a href="#" class="social-link">facebook</a>
+        <a href="#" class="social-link">twitter</a>
+      </div>
+    </div>
+    <p class="footer-credit">Clothing, Best apparels online store</p>
+  </footer>
+
+
+
+  <!-- <script src="js/home.js"></script> -->
+  <!-- <script src="js/footer.js"></script> -->
+  <!-- <script src="js/nav.js"></script> -->
+</body>
+
+</html>

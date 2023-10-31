@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <link rel="stylesheet" href="css/home.css">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+    integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+  <script src="/Angular/module.js"></script>
+  <script src="/Angular/services.js"></script>
+  <script src="/Angular/CategoryController.js"></script>
+
+  <title>Category</title>
+</head>
+
+<body ng-app="MyApp">
+
+  <nav class="navbar">
+    <div class="nav">
+      <img src="img/dark-logo .png" class="brand-logo" alt="">
+      <div class="nav-items">
+        <div class="search">
+          <input type="text" class="search-box" placeholder="search brand, product">
+          <button class="search-btn">search</button>
+        </div>
+        <a href="signup.html"><img src="img/user .png" alt=""></a>
+
+        <a href="ShoppingCart.html"><img src="img/cart (1).png" alt=""></a>
+      </div>
+    </div>
+  </nav>
+
+  <ul class="links-container" ng-controller="catCtrl">
+    <li class="link-item"><a href="index.html" class="link">home</a></li>
+    <li class="link-item" ng-repeat="c in CategoryList"><a href="Category.html?id={{c.cat_Name}}"
+        class="link">{{c.cat_Name}}</a> </li>
+
+    <!-- <li class="link-item"><a href="#" class="link">women</a></li>
+    
+        <li class="link-item"><a href="#" class="link">men</a></li>
+    
+        <li class="link-item"><a href="#" class="link">kids</a></li>
+        <li class="link-item"><a href="#" class="link">accessories</a></li>  -->
+  </ul>
+
+
+  <script src="/Angular/CategoryCtrl.js"></script>
+
+  <section class="product" ng-controller="CategoryCtrl">
+    <h2 class="product-category">Product List Category-Wise </h2>
+    <button class="pre-btn"><img src="img/arrow .png" alt=""></button>
+    <button class="nxt-btn"><img src="img/arrow .png" alt=""></button>
+    <div class="product-container">
+      <div class="product-card" ng-repeat="m in ProductListss">
+        <div class="product-image">
+          <span class="discount-tag">50% off</span>
+          <img ng-src="{{m.image}}" class="product-thumb" alt="productImage">
+          <!-- <button class="card-btn"> <i class="fa-solid fa-heart"></i>WISHLIST</button> -->
+          <button class="card-btn" ng-click="Addcart(m)">Add To Cart</button>
+        </div>
+        <div class="product-info">
+          <!-- <h2 class="product-brand">{{m.}}</h2> -->
+          <p class="product-short-des">{{m.short_desc}}</p>
+          <span class="price">₹{{m.selling_price}}/-</span><span class="actual-price">MRP: ₹{{m.MRP}}/-
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer></footer>
+
+  <script src="js/footer.js"></script>
+
+</body>
+
+</html>
